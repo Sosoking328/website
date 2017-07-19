@@ -1,3 +1,10 @@
+{% extends 'vote/base.html' %}
+
+{% block body %}
+
+
+
+
 {% for album in album.album_set.all %}
   <label for="album{{ forloop.counter }}">
     {{ album.album_title }}
@@ -29,3 +36,5 @@
     {% endfor %}
     <input type="submit" value="favorite">
 </form>
+
+{% endblock %}

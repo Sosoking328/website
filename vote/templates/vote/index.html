@@ -1,32 +1,16 @@
+{% extends 'vote/base.html' %}
 
-<!DOCTYPE html>
-<html>
-<head>
+{% block body %}
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>2017 Miss Chinese Beauty Pageant</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
-    <link rel="stylesheet" href="allery.css">
-
-</head>
-<body>
 
 <div class="container gallery-container">
 
     <h1><p class="page-description text-center">2017 Miss Chinese Beauty Pageant</p></h1>
-
-    <p class="page-description text-center">Thumbnails With Title And Description</p>
-
     <div class="tz-gallery">
 
         <div class="row">
-            {% for album in all_albums %}
+            {% for album in object_list %}
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
                     <a class="lightbox" href="{{ album.album_logo}}">
@@ -34,16 +18,10 @@
                     </a>
                     <div class="caption">
                     <h4><p class="page-description text-center">{{album.album_title}}</p></h4>
-                        <form action="{% url 'vote:favorite' album.id %}" method="post">
-                            {% csrf_token %}
-                                {% if song.is_favorite %}
-                                  <img src="http://www.clker.com/cliparts/D/u/R/8/Y/q/solid-orange-heart-md.png" width=40/>
-                                {% endif %}
-                              </label><br>
+
                             <p class="page-description text-center">
                             <input type="image" src="http://www.clker.com/cliparts/c/l/Y/w/j/p/orange-heart-hi.png" width=40>
                           </p>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -55,9 +33,5 @@
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-<script>
-    baguetteBox.run('.tz-gallery');
-</script>
-</body>
-</html>
+
+{% endblock %}
